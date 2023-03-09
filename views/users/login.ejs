@@ -1,0 +1,10 @@
+<h1>Login page</h1>
+
+<%= msg %>
+    <form action="/users/login" method="post">
+            <label>User ID: <input name="userid" /></label>
+            <br />
+            <label>Password: <input name="password" /></label>
+            <input type="hidden" value="secret" name="what" />
+            <button>Login</button>
+    </form>
