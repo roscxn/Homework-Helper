@@ -9,10 +9,14 @@ const isAuth = async (req, res, next) => {
     res.locals.user = user;
     next();
   } else {
-    res.status(403).send("SORRY");
+    res.status(403).send("Session expired. Please login again <a href='/users/login'>here</a>.");
   }
 };
 
 router.get("/", isAuth, postsCtrl.index);
+router.get("/new", isAuth, postsCtrl.new);
+router.post("/", isAuth, postsCtrl.create);
+router.get("/my", isAuth, postsCtrl.myPosts);
+router.get("/:id", isAuth, postsCtrl.show);
 
 module.exports = router;

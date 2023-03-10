@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+
+<h1>Ask a Question</h1>
+
+<form id="new-form" action="/posts" method="POST">
+    <label>Topic:</label>
+    <input type="text" name="topic"> </br>
+    <label>Subject:</label>
+    <select name="subject">
+        <option value="EM">E-Math</option>
+        <option value="AM">A-Math</option>
+    </select> </br>
+    <label>Level:</label>
+    <select name="level">
+        <option value="S3">Sec 3</option>
+        <option value="S4">Sec 4</option>
+    </select> </br>
+    <input type="submit" value="Ask Question!">
+</form>
+
+<%- include('../partials/footer') %>
