@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+
+<h2>Individual Question</h2>
+
+    <label>Topic:</label>
+        <%= individualPost.topic %> </br>
+
+    <label>Subject:</label>
+        <%= individualPost.subject %> </br>
+
+    <label>Level:</label>
+        <%= individualPost.level %> </br>
+
+</br></br>
+    <h2>Comments</h2>
+    <form id="comment" method="POST" action="/posts/:id/comments">
+        <label>Comment: </label>
+        <textarea name="content"></textarea>
+        <input type="submit" value="Add Comment">
+    </form>
+
+
+
+
+
+    <%- include('../partials/footer') %>

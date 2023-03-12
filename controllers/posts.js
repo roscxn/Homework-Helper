@@ -10,9 +10,14 @@ const index = async (req, res) => {
   }
 };
 
-function newPost(req, res) {
-  res.render('posts/new');
-}
+const newPost = async (req, res) => {
+  try {
+    res.render('posts/new');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal server error');
+  }
+};
 
 const create = async (req, res) => {
   try {
@@ -36,16 +41,52 @@ const myPosts = async (req, res) => {
 };
 
 const show = async (req, res) => {
-    const post = await Post.findById(req.params.id)
-    return res.render("posts/show", { "post": post } 
-    );
+  try {
+    const individualPost = await Post.findById(req.params.id);
+    res.render('posts/show', { individualPost });
+  } catch (err) {
+    res.status(500).send('Internal server error');
   }
+};
+
+const update = (req, res) => {
+  const { id } = req.params;
+  Post.findByIdAndUpdate(id, req.body, { new: true })
+    .exec()
+    .then((post) => {
+      res.redirect("/posts/my");
+    });
+};
+
+const edit = (req, res) => {
+  const { id } = req.params; 
+  const e =
+  Post.findById(id)
+    .exec()
+    .then((post) => {
+      const context = { id, post, e };
+      res.render("posts/edit", context);
+    });
+};
+
+const del = (req, res) => {
+  const { id } = req.params;
+  Post.findByIdAndDelete(id)
+    .exec()
+    .then((post) => {
+      console.log("post deleted: " + post._id);
+      res.redirect("/posts/my");
+    });
+};
 
   module.exports = {
     index,
     new: newPost,
     create,
     myPosts,
-    show
+    show,
+    update,
+    edit,
+    delete: del
   }
   

@@ -1,10 +1,11 @@
 <%- include('../partials/header') %>
 
-<h1>Ask a Question</h1>
+<h2>Ask a Question</h2>
 
 <form id="new-form" action="/posts" method="POST">
     <label>Topic:</label>
-    <input type="text" name="topic"> </br>
+    <input type="text" name="topic" required> </br>
+
     <label>Subject:</label>
     <select name="subject">
         <option value="EM">E-Math</option>

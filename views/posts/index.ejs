@@ -1,6 +1,7 @@
 <%- include('../partials/header') %>
 
-<h1>Main page after login</h1>
+<h2>Main page after login</h2>
+
 <table border="1">
     <thead>
         <tr>
@@ -8,10 +9,12 @@
             <th>Subject</th>
             <th>Level</th>
             <th>View More</th>
+            <th>Posted By</th>
+            <th>Date</th>
         </tr>
     </thead>
     <tbody>
-        <% posts.forEach(p=> { %>
+        <% posts.sort((a, b)=> new Date(b.updatedAt) - new Date(a.updatedAt)).forEach(p=> { %>
             <tr>
                 <td>
                     <%= p.topic %>
@@ -23,12 +26,22 @@
                     <%= p.level %>
                 </td>
                 <td>
-                    <a href="/posts/<%= p._id %>"</a>
+                    <a href="/posts/<%= p._id %>">Details</a>
+                </td>
+                
+                <td>
+                    <%= "NAME" %>
+
+                </td>
+                <td>
+                    <%= new Date(p.updatedAt).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' }) %>
                 </td>
             </tr>
-        </tbody>
+            <% }) %>
+    </tbody>
 
-    <% }) %>
-</table>
+   
+
+</table> 
 
 <%- include('../partials/footer') %>

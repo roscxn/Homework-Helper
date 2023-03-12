@@ -13,10 +13,9 @@
 
 <body>
     <nav>
-        <img src="/images/camera.svg">
         <a href="/posts">View all</a>
         <a href="/posts/my">My Post</a>
         <a href="/posts/new">Ask a Question</a>
-        <a href="/users/logout">Logout</a>
+        <a href="/users/logout" onclick="return confirm('Are you sure you want to logout?')">Logout</a>
     </nav>
     <main>

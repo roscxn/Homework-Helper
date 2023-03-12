@@ -6,13 +6,13 @@ const saltRounds = 10;
 const seed = async (req, res) => {
   const plainTextPassword = "345";
   bcrypt.hash(plainTextPassword, saltRounds, async (err, hash) => {
-    const user = await User.create({ userid: "ros", name: "Roslin", password: hash });
+    const user = await User.create({ userid: "ros", password: hash, name: "Roslin" });
     res.send(user);
   });
 };
 
 const index = async (req, res) => {
-  const context = { msg: " " };
+  const context = { msg: "Welcome back!" };
   res.render("users/login", context);
 };
 
@@ -28,7 +28,7 @@ const login = async (req, res) => {
   const { userid, password } = req.body;
   const user = await User.findOne({ userid }).exec();
   if (user === null) {
-    const context = { msg: "Incorrect User ID or Password" };
+    const context = { msg: "Invalid User ID or Password" };
     res.render("users/login", context);
     return;
   }
@@ -53,7 +53,6 @@ const logout = async (req,res) => {
     }
   })
 };
-
 
 module.exports = {
   index,

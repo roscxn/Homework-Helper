@@ -1,10 +1,30 @@
-<h1>Login page</h1>
+<!DOCTYPE html>
+<html>
 
-<%= msg %>
-    <form action="/users/login" method="post">
-            <label>User ID: <input name="userid" /></label>
-            <br />
-            <label>Password: <input name="password" /></label>
-            <input type="hidden" value="secret" name="what" />
-            <button>Login</button>
-    </form>
+<head>
+        <title>Homework Helper</title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+        <h1>"Lend a Helping Brain"</h1>
+
+<!--Image by pch.vector on Freepik-->
+        <img id="image-index" src="https://i.ibb.co/j64LxK9/P2-index.png" alt="P2-index" border="0">
+        <div id="login-pg">
+                <%= msg %><br><br>
+                        <form action="/users/login" method="post">
+                                <label>User ID: <input name="userid" /></label><br /><br>
+                                <label>Password: </label>
+                                <input name="password" /><input type="hidden" value="secret" name="what" /><br /><br>
+                                <button id="login-button">Login</button>
+                        </form>
+        </div>
+
+        </body>
+
+</html>
+
+
+
+

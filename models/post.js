@@ -6,8 +6,10 @@ const postSchema = new Schema (
         topic: String,
         subject: String,
         level: String,
-    },
-    {
+        // user: { type: Schema.Types.ObjectId, ref: 'User' },
+        // name: String
+    }
+    ,{
         timestamps: true,
     }
 );
