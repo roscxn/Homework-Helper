@@ -3,11 +3,10 @@ const Schema = mongoose.Schema;
 
 const postSchema = new Schema (
     {
+        name: String,
         topic: String,
         subject: String,
-        level: String,
-        // user: { type: Schema.Types.ObjectId, ref: 'User' },
-        // name: String
+        level: String
     }
     ,{
         timestamps: true,

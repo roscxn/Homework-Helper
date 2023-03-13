@@ -21,12 +21,16 @@ const newPost = async (req, res) => {
 
 const create = async (req, res) => {
   try {
+    const userName = req.session.user.name;
+    console.log("create", userName);
+    console.log(req.body);
+    req.body.name = userName
     const post = new Post(req.body);
     await post.save();
     res.redirect('/posts');
   } catch (error){
     console.log(error);
-    res.direct('/posts');
+    res.redirect('/posts');
   }
 }
 

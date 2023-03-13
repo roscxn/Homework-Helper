@@ -6,7 +6,7 @@ const saltRounds = 10;
 const seed = async (req, res) => {
   const plainTextPassword = "345";
   bcrypt.hash(plainTextPassword, saltRounds, async (err, hash) => {
-    const user = await User.create({ userid: "ros", password: hash, name: "Roslin" });
+    const user = await User.create({ userid: "ros", password: hash, name: "Ros" });
     res.send(user);
   });
 };
@@ -35,13 +35,15 @@ const login = async (req, res) => {
 
   bcrypt.compare(password, user.password, (err, result) => {
     if (result) {
-      req.session.userid = user._id;
-      res.redirect("/posts");
+      req.session.user = {user_id: userid, name: user.name };
+      res.redirect(`/posts`);
+      console.log(req.session)
     } else {
       const context = { msg: "Incorrect User ID or Password" };
-      res.render("users/login", context);
+      res.render("users/login", context); 
     }
   });
+  
 };
 
 const logout = async (req,res) => {

@@ -1,9 +1,9 @@
-const Post = require('../models/post');
+const Comment = require('../models/comment');
 
 const createComment = async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
-    post.comments.push(req.body);
+    const comment = await comment.findById(req.params.id);
+    comment.push(req.body);
     await comment.save();
     res.redirect(`/posts/${post._id}`);
   } catch (error){
