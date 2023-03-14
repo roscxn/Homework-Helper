@@ -1,3 +1,4 @@
+const post = require("../models/post");
 const Post = require("../models/post");
 
 const index = async (req, res) => {
@@ -22,9 +23,9 @@ const newPost = async (req, res) => {
 const create = async (req, res) => {
   try {
     const userName = req.session.user.name;
-    console.log("create", userName);
-    console.log(req.body);
-    req.body.name = userName
+    req.body.name = userName;
+    const imageUrl = req.body.imageUrl;
+    res.locals.imageUrl = imageUrl; 
     const post = new Post(req.body);
     await post.save();
     res.redirect('/posts');
@@ -46,41 +47,42 @@ const myPosts = async (req, res) => {
 
 const show = async (req, res) => {
   try {
-    const individualPost = await Post.findById(req.params.id);
-    res.render('posts/show', { individualPost });
+    const post = await Post.findById(req.params.id);
+    res.render('posts/show', { post });
   } catch (err) {
     res.status(500).send('Internal server error');
   }
 };
 
-const update = (req, res) => {
+const update = async (req, res) => {
   const { id } = req.params;
-  Post.findByIdAndUpdate(id, req.body, { new: true })
-    .exec()
-    .then((post) => {
-      res.redirect("/posts/my");
-    });
+  try {
+    const post = await Post.findByIdAndUpdate(id, req.body, { new: true }).exec();
+    res.redirect("/posts/my");
+  } catch (err) {
+    console.error(err);
+  }
 };
 
-const edit = (req, res) => {
-  const { id } = req.params; 
-  const e =
-  Post.findById(id)
-    .exec()
-    .then((post) => {
-      const context = { id, post, e };
-      res.render("posts/edit", context);
-    });
+const edit = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const post = await Post.findById(id).exec();
+    const context = { id, post };
+    res.render("posts/edit", context);
+  } catch (err) {
+    console.error(err);
+  }
 };
 
-const del = (req, res) => {
+const del = async (req, res) => {
   const { id } = req.params;
-  Post.findByIdAndDelete(id)
-    .exec()
-    .then((post) => {
-      console.log("post deleted: " + post._id);
-      res.redirect("/posts/my");
-    });
+  try {
+    const post = await Post.findByIdAndDelete(id);
+    res.redirect("/posts/my");
+  } catch (err) {
+    console.error(err);
+  }
 };
 
   module.exports = {

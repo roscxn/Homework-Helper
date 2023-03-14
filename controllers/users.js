@@ -6,7 +6,9 @@ const saltRounds = 10;
 const seed = async (req, res) => {
   const plainTextPassword = "345";
   bcrypt.hash(plainTextPassword, saltRounds, async (err, hash) => {
-    const user = await User.create({ userid: "ros", password: hash, name: "Ros" });
+    const user = await User.create
+    ({ userid: "ros", password: hash, name: "Roslin" },
+     { userid: "apr", password: hash, name: "April" });
     res.send(user);
   });
 };

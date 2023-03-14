@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const postsController = require("../controllers/posts");
-const User = require("../models/User");
+// const User = require("../models/User");
 
 // const isAuth = async (req, res, next) => {
 //   if (req.session.userid) {
@@ -29,6 +29,8 @@ router.delete("/:id", postsController.delete);
 // router.post("/", isAuth, postsController.create);
 // router.get("/my", isAuth, postsController.myPosts);
 // router.get("/:id", isAuth, postsController.show);
-
+// router.get("/:id/edit", isAuth, postsController.edit);
+// router.put("/:id", isAuth, postsController.update);
+// router.delete("/:id", isAuth, postsController.delete);
 
 module.exports = router;

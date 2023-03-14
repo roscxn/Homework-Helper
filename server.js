@@ -6,18 +6,6 @@ var logger = require('morgan');
 const methodOverride = require("method-override");
 const session = require("express-session");
 
-// //----UPLOAD PIC---------
-// const bodyParser = require('body-parser');
-
-// app.use(bodyParser.urlencoded({ extended: true }));
-
-// // app.post('/upload', (req, res) => {
-// //   const imageUrl = req.body.imageUrl;
-// //   res.render('views/show', { imageUrl });
-// // });
-
-// //----------------
-
 require("dotenv").config();
 require("./config/database");
 
