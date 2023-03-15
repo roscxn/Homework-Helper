@@ -1,5 +1,7 @@
 const Post = require("../models/post");
 
+// Comment for posts
+
 const createComment = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id).exec();
@@ -15,6 +17,8 @@ const createComment = async (req, res) => {
     res.status(500).send('Error creating comment');
   }
 }
+
+// Delete comment
 
 const deleteComment = async (req, res) => {
   const { commentId } = req.params;

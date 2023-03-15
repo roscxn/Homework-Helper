@@ -1,24 +1,33 @@
-const post = require("../models/post");
 const Post = require("../models/post");
+
+
+// First page after login 
 
 const index = async (req, res) => {
   try {
     const posts = await Post.find().exec();
-    res.render('posts/index', { posts });
+    const contextUser = req.session.user.name;  //Welcome back "username" in the header
+    res.render('posts/index', { posts, contextUser });
   } catch (err) {
     console.error(err);
     res.status(500).send('Internal server error');
   }
 };
 
+// When accessing the create post page
+
 const newPost = async (req, res) => {
   try {
-    res.render('posts/new');
+    const contextUser = req.session.user.name;
+    res.render('posts/new', { contextUser });
   } catch (err) {
     console.error(err);
     res.status(500).send('Internal server error');
   }
 };
+
+
+// Create post function
 
 const create = async (req, res) => {
   try {
@@ -31,28 +40,37 @@ const create = async (req, res) => {
     res.redirect('/posts');
   } catch (error){
     console.log(error);
-    res.redirect('/posts');
+    res.status(500).send('Create post error');
   }
 }
 
+// To view posts that belong to the user
+
 const myPosts = async (req, res) => {
   try {
-    const posts = await Post.find().exec();
-    res.render('posts/my', { posts });
+    const contextUser = req.session.user.name;
+    const posts = await Post.find({ name: contextUser }).exec();
+    res.render('posts/my', { posts, contextUser });
   } catch (err) {
     console.error(err);
     res.status(500).send('Internal server error');
   }
 };
 
+
+// To view individual posts after clicking "details" from main page
+
 const show = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
-    res.render('posts/show', { post });
+    const contextUser = req.session.user.name;
+    res.render('posts/show', { post, contextUser });
   } catch (err) {
     res.status(500).send('Internal server error');
   }
 };
+
+// Update edited form
 
 const update = async (req, res) => {
   const { id } = req.params;
@@ -64,16 +82,23 @@ const update = async (req, res) => {
   }
 };
 
+// Edit page
+
 const edit = async (req, res) => {
   const { id } = req.params;
   try {
     const post = await Post.findById(id).exec();
+    const contextUser = req.session.user.name;
     const context = { id, post };
-    res.render("posts/edit", context);
+    res.render("posts/edit", { ...context, contextUser });
   } catch (err) {
     console.error(err);
+    res.status(500).send('Edit post error');
   }
 };
+
+
+// Delete a post
 
 const del = async (req, res) => {
   const { id } = req.params;

@@ -11,6 +11,7 @@
             <th>View More</th>
             <th>Posted By</th>
             <th>Date</th>
+            <th>Replies</th>
         </tr>
     </thead>
     <tbody>
@@ -35,6 +36,9 @@
                 </td>
                 <td>
                     <%= new Date(p.updatedAt).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' }) %>
+                </td>
+                <td>
+                    <%= p.comments.length %>
                 </td>
             </tr>
             <% }) %>

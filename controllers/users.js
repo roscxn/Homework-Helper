@@ -6,9 +6,7 @@ const saltRounds = 10;
 const seed = async (req, res) => {
   const plainTextPassword = "345";
   bcrypt.hash(plainTextPassword, saltRounds, async (err, hash) => {
-    const user = await User.create
-    ({ userid: "ros", password: hash, name: "Roslin" },
-     { userid: "apr", password: hash, name: "April" });
+    const user = await User.create({ userid: "ros", password: hash, name: "Roslin" });
     res.send(user);
   });
 };
@@ -37,7 +35,7 @@ const login = async (req, res) => {
 
   bcrypt.compare(password, user.password, (err, result) => {
     if (result) {
-      req.session.user = {user_id: userid, name: user.name };
+      req.session.user = {user_id: user._id, name: user.name };
       res.redirect(`/posts`);
       console.log(req.session)
     } else {
@@ -45,7 +43,6 @@ const login = async (req, res) => {
       res.render("users/login", context); 
     }
   });
-  
 };
 
 const logout = async (req,res) => {
