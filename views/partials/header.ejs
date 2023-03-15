@@ -7,16 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <title>
-        Homework Helper
+        Lend a Helping Brain
     </title>
 </head>
-Welcome back <%= contextUser %>
+
 <body>
-    
+    <div id="user-msg">Hello there, <%= contextUser %>!</div>
     <nav>
         <a href="/posts">View all</a>
         <a href="/posts/my">My Post</a>
         <a href="/posts/new">Ask a Question</a>
         <a href="/users/logout" onclick="return confirm('Are you sure you want to logout?')">Logout</a>
     </nav>
+    
+    <img id="image-name" src="https://i.ibb.co/PWmY2V6/P2-name.jpg" alt="P2-name" border="0">
     <main>

@@ -20,18 +20,50 @@ const createComment = async (req, res) => {
 
 // Delete comment
 
+// const deleteComment = async (req, res) => {
+//   const { commentId } = req.params;
+//   try {
+//     const sessionUser = req.session.user.name;
+//     const comment = await Comment.findById(commentId);
+//     if (sessionUser === comment.name) {
+//       const result = await Comment.deleteOne({ _id: commentId });
+//       if (result.deletedCount === 0) {
+//         throw new Error("Comment not found");
+//       }
+//       res.redirect(`/posts/${req.params.postId}`);
+//     } else {
+//       res.status(401).send("Unauthorized to delete the comment");
+//     }
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
+
+
 const deleteComment = async (req, res) => {
   const { commentId } = req.params;
   try {
-    const result = await Post.findOneAndUpdate({ "comments._id": commentId }, { $pull: { comments: { _id: commentId } } });
-    if (!result) {
+    const sessionUser = req.session.user.name;
+    const post = await Post.findOne({ "comments._id": commentId });
+    const comment = post.comments.find((c) => c._id.toString() === commentId);
+    if (!comment) {
       throw new Error("Comment not found");
     }
-    res.redirect(`/posts/${req.params.postId}`);
+    if (sessionUser === comment.name) {
+      const result = await post.updateOne({ $pull: { comments: { _id: commentId } } });
+      if (!result) {
+        throw new Error("Comment not found");
+      }
+      res.redirect(`/posts/${req.params.postId}`);
+    } else {
+      res.status(401).send("Unauthorized to delete the comment");
+    }
   } catch (err) {
     console.error(err);
   }
 };
+
+
 
 module.exports = {
     createComment,

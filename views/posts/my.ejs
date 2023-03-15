@@ -27,14 +27,14 @@
                         <%= p.level %>
                     </td>
                     <td>
-                    <a href="/posts/<%= p._id %>">Details</a>
+                    <a href="/posts/<%= p._id %>"><button id="details">Details</button></a>
                     </td>
                     <td>
                     <%= new Date(p.updatedAt).toLocaleDateString('en-US', { day: '2-digit' , month: 'short' , year: 'numeric' }) %>
                     </td>
                     <td>
                     <% const postLink=`/posts/${p._id}/edit`%>
-                    <a href="<%=postLink%>"><button>Edit</button></a>
+                    <a href="<%=postLink%>"><button id="edit">Edit</button></a>
                     </td>
                 </tr>
         </tbody>

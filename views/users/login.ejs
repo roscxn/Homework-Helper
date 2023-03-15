@@ -2,28 +2,26 @@
 <html>
 
 <head>
-        <title>Homework Helper</title>
+        <title>Lend a Helping Brain</title>
         <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 
 <body>
-        <h1>"Lend a Helping Brain"</h1>
-
-<!--Image by pch.vector on Freepik-->
-        <img id="image-index" src="https://i.ibb.co/j64LxK9/P2-index.png" alt="P2-index" border="0">
-        <div id="login-pg">
-                <%= msg %><br><br>
-                        <form action="/users/login" method="post">
-                                <label>User ID: <input name="userid" /></label><br /><br>
-                                <label>Password: </label>
-                                <input name="password" type="password"/><br /><br>
-                                <button id="login-button">Login</button>
-                        </form>
-                        
-        </div>
-
+                <h1>"Lend a Helping Brain"</h1>
+                
+                <!--Image by pch.vector on Freepik-->
+                <img id="image-login" src="https://i.ibb.co/SRCjSmG/P2-login.png" alt="P2-login" border="0">
+                <div id="login-pg">
+                        <%= msg %><br><br>
+                                <form action="/users/login" method="post">
+                                        <label>User ID: <input name="userid" /></label><br /><br>
+                                        <label>Password: </label>
+                                        <input name="password" type="password" /><br /><br>
+                                        <button id="login-button">Login</button>
+                                </form>
+                
+                </div>       
         </body>
-
 </html>
 
 

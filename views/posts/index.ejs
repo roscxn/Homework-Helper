@@ -1,6 +1,7 @@
 <%- include('../partials/header') %>
 
-<h2>Main page after login</h2>
+<body>
+<h2>All Questions</h2>
 
 <table border="1">
     <thead>
@@ -8,10 +9,10 @@
             <th>Topic</th>
             <th>Subject</th>
             <th>Level</th>
-            <th>View More</th>
             <th>Posted By</th>
             <th>Date</th>
             <th>Replies</th>
+            <th>View More</th>
         </tr>
     </thead>
     <tbody>
@@ -27,25 +28,25 @@
                     <%= p.level %>
                 </td>
                 <td>
-                    <a href="/posts/<%= p._id %>">Details</a>
-                </td>
-                
-                <td>
                     <%= p.name %>
 
                 </td>
                 <td>
-                    <%= new Date(p.updatedAt).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' }) %>
+                    <%= new Date(p.updatedAt).toLocaleDateString('en-US', { day: '2-digit' , month: 'short' ,
+                        year: 'numeric' }) %>
                 </td>
                 <td>
                     <%= p.comments.length %>
                 </td>
+                <td>
+                    <a href="/posts/<%= p._id %>"><button id="details">Details</button></a>
+                </td>
             </tr>
             <% }) %>
     </tbody>
+</table>
 
-   
+</body>
 
-</table> 
 
 <%- include('../partials/footer') %>

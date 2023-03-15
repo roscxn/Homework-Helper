@@ -82,13 +82,17 @@ const update = async (req, res) => {
   }
 };
 
+
 // Edit page
 
 const edit = async (req, res) => {
   const { id } = req.params;
-  try {
+  try {  
     const post = await Post.findById(id).exec();
     const contextUser = req.session.user.name;
+    if ( post.name !== contextUser) {
+      return res.status(403).send('Unauthorized to edit this post');
+    }
     const context = { id, post };
     res.render("posts/edit", { ...context, contextUser });
   } catch (err) {
@@ -96,7 +100,6 @@ const edit = async (req, res) => {
     res.status(500).send('Edit post error');
   }
 };
-
 
 // Delete a post
 
