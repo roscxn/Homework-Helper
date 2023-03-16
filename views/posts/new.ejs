@@ -6,14 +6,13 @@
 <form id="new-form" action="/posts" method="POST">
 
     <label>Image URL:</label>
-    <input type="text" id="image_url" name="imageUrl"><br>
-    <span></span>
+    <input type="text" id="image_url" name="imageUrl" 
+    pattern="^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$" title="Please enter a valid URL."><br>
+
     <label>Topic:</label>
     <input type="text" name="topic" required> </br>
-    <span></span>
     <label>Description</label>
     <textarea name="description" required></textarea><br>
-    <span></span>
     <label>Subject:</label>
     <select name="subject">
         <option value="EM">Elementary Mathematics</option>

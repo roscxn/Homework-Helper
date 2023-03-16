@@ -8,9 +8,10 @@
                 <th>Topic</th>
                 <th>Subject</th>
                 <th>Replies</th>
-                <th>View More</th>
                 <th>Date Posted</th>
+                <th>View More</th>
                 <th>Edit</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -27,19 +28,24 @@
                         <%= p.comments.length %>
                     </td>
                     <td>
-                    <a href="/posts/<%= p._id %>"><button id="details">Details</button></a>
+                    <%= new Date(p.updatedAt).toLocaleDateString('en-US', { day: '2-digit' , month: 'short' , year: 'numeric' }) %>
                     </td>
                     <td>
-                    <%= new Date(p.updatedAt).toLocaleDateString('en-US', { day: '2-digit' , month: 'short' , year: 'numeric' }) %>
+                        <a href="/posts/<%= p._id %>"><button id="details">Details</button></a>
                     </td>
                     <td>
                     <% const postLink=`/posts/${p._id}/edit`%>
                     <a href="<%=postLink%>"><button id="edit">Edit</button></a>
+                    </td>
+                    <td>
+                    <form action="/posts/<%=p._id%>?_method=DELETE" method="post">
+                    <button id="delete" type="submit" onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
+                    </form>
                     </td>
                 </tr>
         </tbody>
 
         <% }) %>
     </table>
-
+<br><br>
     <%- include('../partials/footer') %>

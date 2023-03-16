@@ -29,7 +29,7 @@ const newPost = async (req, res) => {
 
 // Create post function
 
-const create = async (req, res) => {
+const create = async (req, res, next) => {
   try {
     const userName = req.session.user.name;
     req.body.name = userName;
@@ -39,8 +39,8 @@ const create = async (req, res) => {
     await post.save();
     res.redirect('/posts');
   } catch (error){
-    console.log(error);
-    res.status(500).send('Create post error');
+    next(error);
+    // res.status(500).send('Create post error');
   }
 }
 
@@ -72,25 +72,14 @@ const show = async (req, res) => {
 
 // Update edited form
 
-// const update = async (req, res) => {
-//   const { id } = req.params;
-//   try {
-//     const opts = { runValidators: true };
-//     const post = await Post.findByIdAndUpdate(id, req.body, opts, { new: true }).exec();
-//     res.redirect("/posts/my");
-//   } catch (err) {
-//     console.error(err);
-//   }
-// };
-
-
-const update = async (req, res) => {
+const update = async (req, res, next) => {
   const { id } = req.params;
   try {
-    const post = await Post.findByIdAndUpdate(id, req.body, { new: true }).exec();
+    const opts = { runValidators: true };
+    const post = await Post.findByIdAndUpdate(id, req.body, opts, { new: true }).exec();
     res.redirect("/posts/my");
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    next(error);
   }
 };
 
@@ -115,13 +104,13 @@ const edit = async (req, res) => {
 
 // Delete a post
 
-const del = async (req, res) => {
+const del = async (req, res, next) => {
   const { id } = req.params;
   try {
     const post = await Post.findByIdAndDelete(id);
     res.redirect("/posts/my");
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    next(error);
   }
 };
 

@@ -93,9 +93,9 @@ nav a:hover {
 }
 
 h2 {
-  font-size: 20px;
+  font-size: 30px;
   margin-top: 50px;
-  text-align: center;
+  margin-left: 190px;
   padding: 30px;
 }
 
@@ -136,7 +136,7 @@ a:hover {
   cursor: pointer;
 }
 
-#details {
+#details, #viewComments {
   border-radius: 20px;
   font-size: 15px;
   padding: 10px;
@@ -144,7 +144,7 @@ a:hover {
   color: #000000;
 }
 
-#edit {
+#edit, #replyPost {
   border-radius: 20px;
   font-size: 15px;
   padding: 10px;
@@ -152,7 +152,15 @@ a:hover {
   color: #000000;
 }
 
-#details:hover, #edit:hover {
+#delete {
+  border-radius: 20px;
+  font-size: 15px;
+  padding: 10px;
+  background-color: rgb(252, 76, 76);
+  color: #000000;
+}
+
+#details:hover, #edit:hover, #delete:hover, #viewComments:hover, #replyPost:hover {
   background-color: #ffffff;
   cursor: pointer;
 }
@@ -171,20 +179,20 @@ a:hover {
    align-items: left;
    flex-direction: column;
    text-align: left;
-   line-height: 60px;
+   line-height: 65px;
  }
  
 
 #replies {
+   margin: 0 auto;
+   align-items: center;
     width: 50%;
-    height: 250px;
-    padding: 12px 20px;
+    height: 200px;
+    padding: 20px 20px;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
     background-color: #f8f8f8;
     resize: none;
-        border-radius: 10px;
+    border-radius: 10px;
 }
-
-

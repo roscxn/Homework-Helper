@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 <h2>Question:</h2>
-    <img src="<%= post.imageUrl %>" /><br><br>
+    <img src="<%= post.imageUrl %>" /><br>
 <div id="questions">
     <label>Description:</label>
     <%= post.description %> </br>
@@ -11,27 +11,33 @@
                 <label>Level:</label>
                 <%= post.level %> </br>
                     Posted by: <%= post.name %>
-                        on <%= post.updatedAt.toLocaleDateString() %>
-</div><br><br>
- <hr>
-                        <h2>Comment:</h2>
-                        <div id="comments">
-<% if (post.comments.length) { %>
+                        on <%= post.updatedAt.toLocaleDateString() %><br>
+                        <a href="#comments"><button id="viewComments" style="display: inline-block; margin-right: 30px;">View All Comments</button></a>
+                        <a href="#replies"><button id="replyPost" style="display: inline-block;">Reply to Post</button></a>
+</div><br>
+
+
+<hr style="width:80%">
+    <div id="comments"></div>
+    <h2>Comments:</h2>
+    <div id="comments">
+    <% if (post.comments.length) { %>
     <% post.comments.forEach(function(c) { %>
-        <img src="<%= c.commentUrl %>" /><br>
-        <%= c.content %><br>
-            Posted by: <%= c.name %> on <%= c.createdAt.toLocaleDateString() %> <br>
+            <b>Posted by: <%= c.name %> on <%= c.createdAt.toLocaleDateString() %></b> <br>
+                    <img src="<%= c.commentUrl %>" />
+                    <%= c.content %><br>
                     <form action="/posts/<%=post._id%>/comments/<%=c._id%>?_method=DELETE" method="post">
-                        <button type="submit"
+                        <button id="delete" type="submit"
                             onclick="return confirm('Are you sure you want to delete this comment?')">Delete</button>
-                    </form>
+                    </form><br>
                     <% }); %>
-                        <br>
+                        
                         <% } else { %>
                             <h5>No Comments Yet</h5>
                             <% } %>
-</div>
-<hr>
+
+                        </div>
+<hr style="width:80%">
 
 <h2>Reply to Question</h2>
 <div id="replies">
@@ -39,18 +45,12 @@
     <label>Type your reply here: </label><br>
     <textarea name="content" required></textarea><br>
     <label>Image URL:</label>
-    <input type="text" id="image2_url" name="commentUrl"><br>
+    <input type="text" id="image2_url" name="commentUrl" 
+    pattern="^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$" title="Please enter a valid URL."><br>
     <input type="submit" value="Add Comment">
 </form>
 
-</div>
+</div><br><br>
                                
-
-
-
-                        
-                        
-
-
 
 <%- include('../partials/footer') %>
