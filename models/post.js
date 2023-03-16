@@ -19,7 +19,7 @@ const postSchema = new Schema (
         description: String,
         topic: { type: String, minlength: 5, maxlength: 50, required: true },
         subject: { type: String, enum: ["AM", "EM", "Additional Mathematics", "Elementary Mathematics"], required: true },
-        level: { type: String, enum: ["S1", "S2", "S3", "S4", "Sec 1", "Sec 2", "Sec 3", "Sec 4", "Sec 5"], required: true },
+        level: { type: String, enum: ["S1", "S2", "S3", "S4", "S5", "Sec 1", "Sec 2", "Sec 3", "Sec 4", "Sec 5"], required: true },
         comments: [commentSchema],
     }
     ,{

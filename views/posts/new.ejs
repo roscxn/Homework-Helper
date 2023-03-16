@@ -2,22 +2,24 @@
 
 
 <h2>Ask a Question</h2>
-<div id="replies">
 <form id="new-form" action="/posts" method="POST">
 
     <label>Image URL:</label>
-    <input type="text" id="image_url" name="imageUrl" 
+    <input type="text" id="image-qns" name="imageUrl" 
     pattern="^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$" title="Please enter a valid URL."><br>
-
+    <br>
     <label>Topic:</label>
-    <input type="text" name="topic" required> </br>
-    <label>Description</label>
-    <textarea name="description" required></textarea><br>
+    <input type="text" name="topic" required>
+    <br><br>
+    <label>Description:</label>
+    <textarea name="description" required></textarea>
+    <br><br>
     <label>Subject:</label>
     <select name="subject">
         <option value="EM">Elementary Mathematics</option>
         <option value="AM">Additional Mathematics</option>
-    </select> </br>
+    </select> 
+    <br><br>
     <label>Level:</label>
     <select name="level">
         <option value="S1">Sec 1</option>
@@ -25,11 +27,12 @@
         <option value="S3">Sec 3</option>
         <option value="S4">Sec 4</option>
         <option value="S5">Sec 5</option>
-    </select> </br> <br>
-    <input type="submit" value="Ask Question!">
+    </select> 
+    <br><br><br>
+    <input type="submit" id="buttonMisc" value="Ask Question!">
 </form>
 </div>
-
+<br><br><br>
 
 
 <%- include('../partials/footer') %>

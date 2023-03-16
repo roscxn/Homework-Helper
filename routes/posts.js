@@ -3,6 +3,8 @@ const router = express.Router();
 const postsController = require("../controllers/posts");
 const User = require("../models/User");
 
+
+
 const isAuth = async (req, res, next) => {
   try {
     if (req.session.user.user_id) {
@@ -10,13 +12,29 @@ const isAuth = async (req, res, next) => {
       res.locals.user = user;
       next();
     } else {
-      res.status(403).send('Session expired. Please login again <a href="/users/login">here</a>.');
+    const context = { msg: "Session expired. Please login again." };
+    res.render("users/login", context);
     }
   } catch (err) {
-    console.error(err);
-    res.status(500).send('Session expired. Please login again <a href="/users/login">here</a>.');
+    const context = { msg: "Session expired. Please login again." };
+    res.render("users/login", context);
   }
 };
+
+// const isAuth = async (req, res, next) => {
+//   try {
+//     if (req.session.user.user_id) {
+//       const user = await User.findById(req.session.user.user_id).exec();
+//       res.locals.user = user;
+//       next();
+//     } else {
+//       res.status(403).send('Session expired. Please login again <a href="/users/login">here</a>.');
+//     }
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).send('Session expired. Please login again <a href="/users/login">here</a>.');
+//   }
+// };
 
 
 router.get("/", isAuth, postsController.index);
