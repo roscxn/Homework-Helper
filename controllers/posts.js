@@ -72,6 +72,18 @@ const show = async (req, res) => {
 
 // Update edited form
 
+// const update = async (req, res) => {
+//   const { id } = req.params;
+//   try {
+//     const opts = { runValidators: true };
+//     const post = await Post.findByIdAndUpdate(id, req.body, opts, { new: true }).exec();
+//     res.redirect("/posts/my");
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
+
+
 const update = async (req, res) => {
   const { id } = req.params;
   try {
