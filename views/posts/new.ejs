@@ -1,19 +1,19 @@
 <%- include('../partials/header') %>
 
-<div id="questions">
-<h2>Ask a Question</h2>
 
+<h2>Ask a Question</h2>
+<div id="replies">
 <form id="new-form" action="/posts" method="POST">
 
     <label>Image URL:</label>
     <input type="text" id="image_url" name="imageUrl"><br>
-
-    <label>Topic:</label> 
+    <span></span>
+    <label>Topic:</label>
     <input type="text" name="topic" required> </br>
-
+    <span></span>
     <label>Description</label>
     <textarea name="description" required></textarea><br>
-
+    <span></span>
     <label>Subject:</label>
     <select name="subject">
         <option value="EM">Elementary Mathematics</option>
@@ -29,8 +29,8 @@
     </select> </br> <br>
     <input type="submit" value="Ask Question!">
 </form>
-
 </div>
+
 
 
 <%- include('../partials/footer') %>

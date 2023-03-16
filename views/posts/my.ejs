@@ -7,7 +7,7 @@
             <tr>
                 <th>Topic</th>
                 <th>Subject</th>
-                <th>Level</th>
+                <th>Replies</th>
                 <th>View More</th>
                 <th>Date Posted</th>
                 <th>Edit</th>
@@ -24,7 +24,7 @@
                         <%= p.subject %>
                     </td>
                     <td>
-                        <%= p.level %>
+                        <%= p.comments.length %>
                     </td>
                     <td>
                     <a href="/posts/<%= p._id %>"><button id="details">Details</button></a>

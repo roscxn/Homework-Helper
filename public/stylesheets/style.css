@@ -62,11 +62,13 @@ h1 {
 }
 
 #user-msg {
+  font-size: 16px;
   position: absolute;
   top: 50px;
   left: 250px;
 }
 nav {
+  font-size: 17px;
   background-color: #000000cb;
   margin-top: 100px;
   margin-left: 210px;
@@ -87,23 +89,11 @@ nav a {
 
 nav a:hover {
   color: #b4a9a9;
-}
-
-
-#all-qns {
-  background-color: yellow;
-  border-width: 10px;
-  padding: 10px;
-  font: 20px;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
-}
-
-img {
-  max-width: 700px;
-  max-height: 700px;
+  cursor: pointer;
 }
 
 h2 {
+  font-size: 20px;
   margin-top: 50px;
   text-align: center;
   padding: 30px;
@@ -116,6 +106,7 @@ table {
   margin: 0 auto;
   border-collapse: collapse;
   border-spacing: 0;
+  font-size: 16px;
 }
 
 th {
@@ -133,6 +124,7 @@ tr:nth-child(even) {
 
 tr:hover {
   background-color: #bec1c26f;
+  
 }
 
 a {
@@ -141,6 +133,7 @@ a {
 }
 a:hover {
   color: white;
+  cursor: pointer;
 }
 
 #details {
@@ -161,9 +154,37 @@ a:hover {
 
 #details:hover, #edit:hover {
   background-color: #ffffff;
+  cursor: pointer;
 }
 
-#questions {
-  text-align: center;
+ img {
+   max-width: 700px;
+   max-height: 700px;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+ }
+
+ #questions, #comments {
+  font-size: 18px;
+   margin: 0px 0px 10px 450px;
+   align-items: left;
+   flex-direction: column;
+   text-align: left;
+   line-height: 60px;
+ }
+ 
+
+#replies {
+    width: 50%;
+    height: 250px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+        border-radius: 10px;
 }
+
 
