@@ -22,7 +22,7 @@ As a user, I want to be able to...
 ## Development (Model, Views, Controllers)
 
 ### Model 
-![image](https://user-images.githubusercontent.com/114375385/225781808-70a213b9-5f24-48d8-91d7-34c7f48c5cee.png)
+![image](https://user-images.githubusercontent.com/114375385/225783448-ba50c952-7322-437d-b25e-70799bc7215e.png)
 
 ## CRUD
 | HTTP Method | Path / URL | CRUD Operation  | 
