@@ -6,9 +6,6 @@ Students may face some difficulties when doing homework or revision, and need a 
 
 #### <a href="https://lend-a-helping-brain.cyclic.app/">Access the application here</a>. 
 
-User Id: apr
-
-Password: 345
 
 ## Users' Stories
 
