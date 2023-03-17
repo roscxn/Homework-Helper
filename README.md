@@ -31,13 +31,15 @@ As a user, I want to be able to...
 | GET | /users/logout  | User Logout |
 | POST  | /users/login | User Login |
 | GET  | /posts | View All Posts Page |
-| GET  | /new | Create Posts Page |
-| POST  | / | Create Posts |
+| GET  | /new | Create Post Page |
+| POST  | / | Create New Post |
 | GET  | /my | View My Posts |
 | GET  | /:id | View Specific Post |
 | GET  | /:id/edit | Edit Specific Post Page |
 | PUT  | /:id | Update/Edit Specific Post |
 | DELETE | /:id | Delete Specific Post |
+| POST | /posts/:id/comments | Create New Comment |
+| DELETE | /posts/:postId/comments/:commentsId | Delete Specific Comment |
 
 ## Preview
 
