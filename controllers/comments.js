@@ -20,26 +20,6 @@ const createComment = async (req, res) => {
 
 // Delete comment
 
-// const deleteComment = async (req, res) => {
-//   const { commentId } = req.params;
-//   try {
-//     const sessionUser = req.session.user.name;
-//     const comment = await Comment.findById(commentId);
-//     if (sessionUser === comment.name) {
-//       const result = await Comment.deleteOne({ _id: commentId });
-//       if (result.deletedCount === 0) {
-//         throw new Error("Comment not found");
-//       }
-//       res.redirect(`/posts/${req.params.postId}`);
-//     } else {
-//       res.status(401).send("Unauthorized to delete the comment");
-//     }
-//   } catch (err) {
-//     console.error(err);
-//   }
-// };
-
-
 const deleteComment = async (req, res) => {
   const { commentId } = req.params;
   try {
@@ -62,7 +42,6 @@ const deleteComment = async (req, res) => {
     console.error(err);
   }
 };
-
 
 
 module.exports = {
